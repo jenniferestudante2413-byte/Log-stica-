@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Logística Empresarial</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* MENU */
+header{
+    background:#0d47a1;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+/* SEÇÕES */
+section{
+    padding:40px 20px;
+    text-align:center;
+}
+
+.titulo{
+    font-size:28px;
+    margin-bottom:20px;
+    color:#0d47a1;
+}
+
+/* CARDS */
+.cards{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    max-width:400px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* BOTÃO */
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#0d47a1;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1565c0;
+}
+
+/* ANIMAÇÃO CAMINHÃO */
+.estrada{
+    background:#263238;
+    height:80px;
+    position:relative;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.caminhao{
+    position:absolute;
+    top:15px;
+    left:-100px;
+    font-size:40px;
+    animation:mover 5s linear infinite;
+}
+
+@keyframes mover{
+    from{ left:-100px; }
+    to{ left:100%; }
+}
+
+/* RODAPÉ */
+footer{
+    background:#0d47a1;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>LOGÍSTICA ESTRATÉGICA</h1>
+<p>Planejamento • Transporte • Armazenamento • Eficiência</p>
+</header>
+
+<section>
+<h2 class="titulo">Sobre a Logística</h2>
+<p>
+A logística empresarial é responsável por planejar, executar e controlar o fluxo de produtos,
+garantindo eficiência, redução de custos e entrega no prazo.
+</p>
+</section>
+
+<section>
+<h2 class="titulo">Indicadores Operacionais</h2>
+
+<div class="cards">
+    <div class="card">
+        <h3>📦 Estoque</h3>
+        <p>Controle estratégico para evitar perdas e atrasos.</p>
+    </div>
+
+    <div class="card">
+        <h3>🚛 Transporte</h3>
+        <p>Distribuição eficiente garantindo entrega no prazo.</p>
+    </div>
+
+    <div class="card">
+        <h3>⏱ Prazo</h3>
+        <p>Monitoramento em tempo real das operações.</p>
+    </div>
+</div>
+</section>
+
+<section>
+<h2 class="titulo">Simulação de Entrega</h2>
+<button onclick="mostrarMensagem()">Iniciar Operação</button>
+<p id="mensagem"></p>
+
+<div class="estrada">
+    <div class="caminhao">🚛</div>
+</div>
+</section>
+
+<section>
+<h2 class="titulo">Acesse a Apresentação</h2>
+<p>Escaneie o QR Code:</p>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://seusiteaqui.com">
+
+<p><b>Troque "https://seusiteaqui.com" pelo link real do seu site.</b></p>
+</section>
+
+<footer>
+<p>Projeto Educacional – Logística Empresarial</p>
+</footer>
+
+<script>
+function mostrarMensagem(){
+    document.getElementById("mensagem").innerText =
+    "Operação iniciada com sucesso! Transporte em andamento...";
+}
+</script>
+
+</body>
+</html>
