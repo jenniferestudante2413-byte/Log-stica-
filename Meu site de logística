@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logística & Supply Chain Interativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .step-card:hover { transform: translateY(-5px); transition: all 0.3s; }
+        .active-step { border: 3px solid #3b82f6; background-color: #eff6ff; }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <header class="bg-blue-900 text-white py-10 shadow-lg">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">Explorador de Cadeia de Suprimentos</h1>
+            <p class="mt-2 text-blue-200">Clique nas etapas para entender o fluxo logístico</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-10">
+            <button onclick="showStep('materia')" class="step-card bg-white p-6 rounded-lg shadow text-center cursor-pointer">
+                <span class="text-3xl">🏗️</span>
+                <h3 class="font-bold mt-2">Matéria-Prima</h3>
+            </button>
+            <button onclick="showStep('producao')" class="step-card bg-white p-6 rounded-lg shadow text-center cursor-pointer">
+                <span class="text-3xl">🏭</span>
+                <h3 class="font-bold mt-2">Produção</h3>
+            </button>
+            <button onclick="showStep('distribuicao')" class="step-card bg-white p-6 rounded-lg shadow text-center cursor-pointer">
+                <span class="text-3xl">🚛</span>
+                <h3 class="font-bold mt-2">Distribuição</h3>
+            </button>
+            <button onclick="showStep('varejo')" class="step-card bg-white p-6 rounded-lg shadow text-center cursor-pointer">
+                <span class="text-3xl">🏪</span>
+                <h3 class="font-bold mt-2">Varejo</h3>
+            </button>
+            <button onclick="showStep('cliente')" class="step-card bg-white p-6 rounded-lg shadow text-center cursor-pointer">
+                <span class="text-3xl">🏠</span>
+                <h3 class="font-bold mt-2">Cliente Final</h3>
+            </button>
+        </div>
+
+        <div id="info-box" class="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-blue-500 min-h-[300px]">
+            <div id="content-default">
+                <h2 class="text-2xl font-bold text-gray-800">Bem-vindo ao Guia de Logística</h2>
+                <p class="mt-4 text-gray-600">A logística é a engrenagem que move o mundo. Selecione uma das etapas acima para ver como a gestão da cadeia de suprimentos (Supply Chain) integra cada processo desde a origem até o consumo.</p>
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" class="mt-6 rounded-lg w-full max-h-64 object-cover" alt="Logística">
+            </div>
+            <div id="content-display" class="hidden">
+                <h2 id="step-title" class="text-3xl font-bold text-blue-900"></h2>
+                <p id="step-desc" class="mt-4 text-lg text-gray-700 leading-relaxed"></p>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-4 rounded">
+                        <h4 class="font-bold text-blue-800">Principais Desafios:</h4>
+                        <ul id="step-challenges" class="list-disc ml-5 mt-2 text-gray-600"></ul>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded">
+                        <h4 class="font-bold text-green-800">Tecnologias Usadas:</h4>
+                        <ul id="step-tech" class="list-disc ml-5 mt-2 text-gray-600"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-6 text-gray-500 text-sm">
+        Conceito de Logística 4.0 - Gerado para fins educacionais.
+    </footer>
+
+    <script>
+        const data = {
+            materia: {
+                title: "Extração de Matéria-Prima",
+                desc: "Tudo começa aqui. É a fase de aquisição de insumos básicos (madeira, minério, petróleo, grãos). A logística aqui foca na gestão de fornecedores e transporte pesado inicial.",
+                challenges: ["Sustentabilidade", "Flutuação de preços", "Prazos de entrega dos fornecedores"],
+                tech: ["IoT em frotas", "Blockchain para rastreabilidade"]
+            },
+            producao: {
+                title: "Manufatura e Produção",
+                desc: "A transformação da matéria-prima em produto acabado. A logística interna (intralogística) garante que os materiais cheguem à linha de montagem no momento exato (Just-in-Time).",
+                challenges: ["Desperdício", "Controle de qualidade", "Eficiência energética"],
+                tech: ["Robótica", "Gêmeos Digitais (Digital Twins)"]
+            },
+            distribuicao: {
+                title: "Armazenagem e Distribuição",
+                desc: "Os produtos são estocados em Centros de Distribuição (CDs) estrategicamente localizados para reduzir o tempo de frete e custos de transporte.",
+                challenges: ["Gestão de estoque", "Custos de combustível", "Roteirização"],
+                tech: ["Sistemas WMS", "Drones de inventário"]
+            },
+            varejo: {
+                title: "Varejo e Ponto de Venda",
+                desc: "Onde o produto encontra o comprador. Envolve a gestão de prateleiras e a logística de reposição rápida para evitar a ruptura (falta de produto).",
+                challenges: ["Previsão de demanda", "Experiência do cliente", "Espaço físico vs. E-commerce"],
+                tech: ["Big Data para previsão", "RFID"]
+            },
+            cliente: {
+                title: "Entrega Final (Last Mile)",
+                desc: "A 'última milha' é a etapa mais cara e complexa. É o transporte do CD ou loja até a porta do consumidor final.",
+                challenges: ["Trânsito urbano", "Tentativas de entrega frustradas", "Logística reversa (devoluções)"],
+                tech: ["Aplicativos de rastreio", "Veículos elétricos"]
+            }
+        };
+
+        function showStep(id) {
+            document.getElementById('content-default').classList.add('hidden');
+            const display = document.getElementById('content-display');
+            display.classList.remove('hidden');
+
+            const step = data[id];
+            document.getElementById('step-title').innerText = step.title;
+            document.getElementById('step-desc').innerText = step.desc;
+
+            const challengesList = document.getElementById('step-challenges');
+            challengesList.innerHTML = step.challenges.map(c => `<li>${c}</li>`).join('');
+
+            const techList = document.getElementById('step-tech');
+            techList.innerHTML = step.tech.map(t => `<li>${t}</li>`).join('');
+        }
+    </script>
+</body>
+</html>
